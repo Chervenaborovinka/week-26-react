@@ -1,4 +1,3 @@
-import WordCard from "../WordCard/WordCard";
 import { Link } from "react-router-dom";
 
 function Header() {
