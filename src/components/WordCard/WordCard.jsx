@@ -10,7 +10,6 @@ const WordCard = (props) => {
         setShowTranslation((prevShowTranslation) => !prevShowTranslation);
     };
 
-
     return (
         <div className="word-card" onClick={handleToggleTranslation}>
             <p>{props.word}</p>

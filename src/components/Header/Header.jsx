@@ -5,9 +5,17 @@ function Header() {
     return (
         <div className="nav">
             <nav>
-                <Link to="/"><img src="logo.png" alt="Logo" /></Link>
-                <Link to="/table">Table</Link>
-                <Link to="/game">WordCarousel</Link>
+                <ul>
+                    <li>
+                        <Link to="/"><img src="logo.png" alt="Logo" />Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/table">Table</Link>
+                    </li>
+                    <li>
+                        <Link to="/game">Game</Link>
+                    </li>
+                </ul>
             </nav>
         </div>
     );
