@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import words from "../../data/words";
 
-
-const Table = ({ words }) => {
+const Table = () => {
 
     return (
         <div>

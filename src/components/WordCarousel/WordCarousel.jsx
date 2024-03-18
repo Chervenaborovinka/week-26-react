@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import WordCard from "../WordCard/WordCard";
+import words from "../../data/words";
 
-const WordCarousel = ({ words = [], initialIndex = 0 }) => {
-    const [currentCardIndex, setCurrentCardIndex] = useState(initialIndex);
-
-    const handleNextCard = () => {
-        setCurrentCardIndex((prevIndex) => (prevIndex === words.length - 1 ? 0 : prevIndex + 1));
-    };
+const WordCarousel = () => {
+    const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
     const handlePrevCard = () => {
-        setCurrentCardIndex((prevIndex) => (prevIndex === 0 ? words.length - 1 : prevIndex - 1));
+        setCurrentCardIndex((currentCardIndex === 0 ? words.length - 1 : currentCardIndex - 1));
     };
+
+    const handleNextCard = () => {
+        setCurrentCardIndex((currentCardIndex === words.length - 1 ? 0 : currentCardIndex + 1));
+    };
+
 
     const handleReset = () => {
         setCurrentCardIndex(0);
@@ -34,9 +36,9 @@ const WordCarousel = ({ words = [], initialIndex = 0 }) => {
     );
 };
 
-WordCarousel.defaultProps = {
-    initialIndex: 0,
-};
+// WordCarousel.defaultProps = {
+//     initialIndex: 0,
+// };
 
 export default WordCarousel;
 
