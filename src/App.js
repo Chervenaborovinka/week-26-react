@@ -3,7 +3,7 @@ import './App.css';
 import WordCarousel from './components/WordCarousel/WordCarousel';
 import Table from "./components/Table";
 import words from "./data/words";
-import { Home } from "./Home";
+import { Home } from "./components/Home/Home";
 import Missing from './components/Missing/Missing';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
