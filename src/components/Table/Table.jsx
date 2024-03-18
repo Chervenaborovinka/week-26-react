@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import words from "../../data/words";
 
-const Table = () => {
+
+const Table = ({ words }) => {
 
     return (
         <div>
@@ -59,7 +59,7 @@ const TableRow = ({ rowData }) => {
     return isSelected ? (
         <tr>
             <td>
-                <td>{id}</td>
+                <td>{value.id}</td>
             </td>
             <td>
                 <input
