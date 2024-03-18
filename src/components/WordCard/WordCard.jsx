@@ -9,8 +9,6 @@ const WordCard = ({ card }) => {
 
     const [value, setValue] = useState(id);
 
-
-
     function getValue(event) {
         const newValue = event.target.value;
         setValue(newValue);
