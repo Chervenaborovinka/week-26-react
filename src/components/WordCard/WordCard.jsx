@@ -4,36 +4,22 @@ import "./WordCard.css";
 const WordCard = (props) => {
 
 
+    const [showTranslation, setShowTranslation] = useState(false);
 
-    const [isSelected, setIsSelected] = useState(false);
-
-    const [value, setValue] = useState(props.isSelected || false);
-
-    function getValue(event) {
-        const newValue = event.target.value;
-        setValue(newValue);
-    }
+    const handleToggleTranslation = () => {
+        setShowTranslation((prevShowTranslation) => !prevShowTranslation);
+    };
 
 
     return (
-        <div className="word-card">
-            {isSelected ? (
-                <input
-                    type='text'
-                    onChange={getValue}
-                    value={value}
-                    onBlur={() => setIsSelected(false)}
-                />
-            ) : (
-                <div className='id' onClick={() => setIsSelected(true)}>
-                    {value}
-                </div>
-            )}
-            <div className='word'>{props.word}</div>
-            <div className='transcription'>{props.transcription}</div>
-            <div className='translation'>{props.translation}</div>
+        <div className="word-card" onClick={handleToggleTranslation}>
+            <p>{props.word}</p>
+            <p>{props.transcription}</p>
+            {showTranslation && <p>{props.translation}</p>}
+
         </div>
     );
 };
+
 
 export default WordCard;
