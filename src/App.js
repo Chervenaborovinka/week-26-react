@@ -10,8 +10,8 @@ import words from "./data/words";
 function App() {
   return (
     <div className="App">
-
-      <Router>
+      <WordCarousel />
+      {/* <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Table words={words} />} />
@@ -19,7 +19,7 @@ function App() {
           <Route path="/game" element={<WordCarousel words={words} />} />
           <Route path="*" element={<Missing />} />
         </Routes>
-      </Router>
+      </Router> */}
     </div>
   );
 }

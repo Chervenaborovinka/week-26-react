@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import WordCard from "../WordCard/WordCard";
+import words from "../../data/words";
 
-
-const WordCarousel = ({ words }) => {
+const WordCarousel = () => {
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
     const handlePrevCard = () => {

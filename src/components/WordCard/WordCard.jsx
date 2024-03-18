@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./WordCard.css";
 
-const WordCard = ({ card }) => {
-    const { id, word, transcription, translation } = card;
+const WordCard = (props) => {
+
 
 
     const [isSelected, setIsSelected] = useState(false);
 
-    const [value, setValue] = useState(id);
+    const [value, setValue] = useState(props.isSelected || false);
 
     function getValue(event) {
         const newValue = event.target.value;
@@ -29,9 +29,9 @@ const WordCard = ({ card }) => {
                     {value}
                 </div>
             )}
-            <div className='word'>{word}</div>
-            <div className='transcription'>{transcription}</div>
-            <div className='translation'>{translation}</div>
+            <div className='word'>{props.word}</div>
+            <div className='transcription'>{props.transcription}</div>
+            <div className='translation'>{props.translation}</div>
         </div>
     );
 };
