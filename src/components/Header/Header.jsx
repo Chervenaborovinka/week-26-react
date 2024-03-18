@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 function Header() {
 
@@ -7,7 +8,7 @@ function Header() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/"><img src="logo.png" alt="Logo" />Home</Link>
+                        <Link to="/"><img src="logo.png" alt="Logo" /></Link>
                     </li>
                     <li>
                         <Link to="/table">Table</Link>
