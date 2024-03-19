@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import words from "../../data/words";
+import "./Table.css";
 
 const Table = () => {
 
     return (
-        <div>
-            <table border="1">
+        <div className="table">
+            <table className="table-rows">
                 <tr>
                     <th>#</th>
                     <th>Word</th>
