@@ -8,10 +8,11 @@ const WordCard = (props) => {
 
     const handleToggleTranslation = () => {
         setShowTranslation((prevShowTranslation) => !prevShowTranslation);
+        props.counter();
     };
 
     return (
-        <div className="word-card" onClick={() => { props.handleToggleTranslation(); }}>
+        <div className="word-card" onClick={handleToggleTranslation} >
             <p>{props.word}</p>
             <p>{props.transcription}</p>
             {showTranslation && <p>{props.translation}</p>}

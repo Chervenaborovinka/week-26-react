@@ -38,7 +38,7 @@ export default function WordCarousel() {
                             word={words.word}
                             transcription={words.transcription}
                             translation={words.translation}
-                            handleToggleTranslation={handleWordsLearned}
+                            counter={handleWordsLearned}
                         />
                     </div>
                 ))}
