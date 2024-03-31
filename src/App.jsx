@@ -2,7 +2,7 @@
 import './App.css';
 import WordCarousel from './components/WordCarousel/WordCarousel';
 import Table from "./components/Table/Table";
-import Missing from './components/Missing/Missing';
+import Missing from './components/404Page/Missing';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import words from "./data/words";
