@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./WordCard.css";
 
 const WordCard = (props) => {
-
-
     const [showTranslation, setShowTranslation] = useState(false);
+
+    const translateButton = useRef(null);
+
+    useEffect(() => {
+        if (translateButton.current) {
+            translateButton.current.focus();
+        }
+    }, [props.word]);
 
     const handleToggleTranslation = () => {
         setShowTranslation((prevShowTranslation) => !prevShowTranslation);
