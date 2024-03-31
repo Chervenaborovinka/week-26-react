@@ -11,12 +11,12 @@ const WordCard = (props) => {
     };
 
     return (
-        <div className="word-card" onClick={handleToggleTranslation}>
+        <div className="word-card" onClick={() => { props.handleToggleTranslation(); }}>
             <p>{props.word}</p>
             <p>{props.transcription}</p>
             {showTranslation && <p>{props.translation}</p>}
 
-        </div>
+        </div >
     );
 };
 
