@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import "../../logo.svg";
 
 
 function Header() {
@@ -16,6 +17,9 @@ function Header() {
                     </li>
                     <li>
                         <Link to="/game">Game</Link>
+                    </li>
+                    <li>
+                        <Link to="/text">Text</Link>
                     </li>
                 </ul>
             </nav>
