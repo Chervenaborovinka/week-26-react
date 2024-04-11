@@ -36,15 +36,19 @@ const TableRow = ({ rowData }) => {
         transcription,
         translation,
     });
+    const [emptyFields, setEmptyFields] = useState([]);
 
-    function handleClose() {
+
+   function handleClose() {
         setIsSelected(!isSelected);
         setValue({ ...rowData });
+        setEmptyFields([]);
     }
 
     function handleSave() {
         setValue({ ...value });
         setIsSelected(!isSelected);
+        setEmptyFields([]);
     }
 
     function handleEdit() {
@@ -52,9 +56,20 @@ const TableRow = ({ rowData }) => {
     }
 
     function handleChange(e) {
+        const { name, value } = e.target;
         setValue((prevValue) => {
-            return { ...prevValue, [e.target.name]: e.target.value };
+            return { ...prevValue, [name]: value };
         });
+
+
+   // Проверка на пустые поля
+        if (value.trim() === '') {
+            if (!emptyFields.includes(name)) {
+                setEmptyFields([...emptyFields, name]);
+            }
+        } else {
+            setEmptyFields(emptyFields.filter(field => field !== name));
+        }
     }
 
     return isSelected ? (
@@ -68,6 +83,7 @@ const TableRow = ({ rowData }) => {
                     value={value.word}
                     name={"word"}
                     onChange={handleChange}
+                    style={{ border: emptyFields.includes('word') ? '1px solid red' : 'none' }}
                 />
             </td>
             <td>
@@ -76,6 +92,7 @@ const TableRow = ({ rowData }) => {
                     value={value.transcription}
                     name={"transcription"}
                     onChange={handleChange}
+                    style={{ border: emptyFields.includes('transcription') ? '1px solid red' : 'none' }}
                 />
             </td>
             <td>
@@ -84,9 +101,10 @@ const TableRow = ({ rowData }) => {
                     value={value.translation}
                     name={"translation"}
                     onChange={handleChange}
+                    style={{ border: emptyFields.includes('translation') ? '1px solid red' : 'none' }}
                 />
             </td>
-            <button onClick={handleSave}>Save</button>
+            <button disabled={emptyFields.length > 0} onClick={handleSave}>Save</button>
             <button onClick={handleClose}>Close</button>
         </tr>
     ) : (
