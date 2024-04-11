@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddButton({ newItem, setNewItem, addItem }) {
+function AddButton({ newItem, setNewItem, addItem, newItemFormatted }) {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         addItem(e);
@@ -15,6 +15,7 @@ function AddButton({ newItem, setNewItem, addItem }) {
                 onChange={(e) => setNewItem(e.target.value)}
             />
             <button type="submit">Add Item</button>
+            <p>{newItemFormatted}</p>
         </form>
     );
 }
