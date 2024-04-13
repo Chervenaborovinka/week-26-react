@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import words from "../../data/words";
-import "./Table.css";
+import styles from "./Table.module.css";
 
 const Table = () => {
 
     return (
-        <div className="table">
+        <div className={styles.table}>
             <table className="table-rows">
                 <tr>
                     <th>#</th>
@@ -36,19 +36,32 @@ const TableRow = ({ rowData }) => {
         transcription,
         translation,
     });
-    const [emptyFields, setEmptyFields] = useState([]);
+
+    // const [emptyFields, setEmptyFields] = useState([]); //таким образом фиксируем ошибки,т е пустые поля
+
+    const [emptyFields,setEmptyFields] = useState({
+        id: false,
+        word: false,
+        transcription:false,
+        translation:false,
+    }) 
+    // иной способ - как из урока - указать ошибки
 
 
-   function handleClose() {
+    function handleClose() {
         setIsSelected(!isSelected);
         setValue({ ...rowData });
         setEmptyFields([]);
     }
 
     function handleSave() {
-        setValue({ ...value });
-        setIsSelected(!isSelected);
-        setEmptyFields([]);
+        if (value.word.match(/[а-яА-Я]/g)){
+            setEmptyFields({...emptyFields, word:"Please, fill in english"});
+        } else {
+            setValue({ ...value });
+            setIsSelected(!isSelected);
+            setEmptyFields([]);
+        }
     }
 
     function handleEdit() {
@@ -60,17 +73,24 @@ const TableRow = ({ rowData }) => {
         setValue((prevValue) => {
             return { ...prevValue, [name]: value };
         });
+        setEmptyFields({...emptyFields,
+            [name]:
+            value.trim()=== "" ? "Field is empty" : false,
+        });
+    }
 
 
    // Проверка на пустые поля
-        if (value.trim() === '') {
-            if (!emptyFields.includes(name)) {
-                setEmptyFields([...emptyFields, name]);
-            }
-        } else {
-            setEmptyFields(emptyFields.filter(field => field !== name));
-        }
-    }
+    //     if (value.trim() === '') {
+    //         if (!emptyFields.includes(name)) {
+    //             setEmptyFields([...emptyFields, name]);
+    //         }
+    //     } else {
+    //         setEmptyFields(emptyFields.filter(field => field !== name));
+    //     }
+    
+
+    const btnDisabled = Object.values(emptyFields).some((elem)=>elem)
 
     return isSelected ? (
         <tr>
@@ -83,8 +103,10 @@ const TableRow = ({ rowData }) => {
                     value={value.word}
                     name={"word"}
                     onChange={handleChange}
-                    style={{ border: emptyFields.includes('word') ? '1px solid red' : 'none' }}
+                    // style={{ border: emptyFields.includes('word') ? '1px solid red' : 'none' }}
+                    className={emptyFields.word ? styles.border__error : ''}
                 />
+                <p>{emptyFields.word && emptyFields.word}</p>
             </td>
             <td>
                 <input
@@ -92,7 +114,8 @@ const TableRow = ({ rowData }) => {
                     value={value.transcription}
                     name={"transcription"}
                     onChange={handleChange}
-                    style={{ border: emptyFields.includes('transcription') ? '1px solid red' : 'none' }}
+                    // style={{ border: emptyFields.includes('transcription') ? '1px solid red' : 'none' }}
+                    className={emptyFields.transcription ? styles.border__error : ''}
                 />
             </td>
             <td>
@@ -101,10 +124,11 @@ const TableRow = ({ rowData }) => {
                     value={value.translation}
                     name={"translation"}
                     onChange={handleChange}
-                    style={{ border: emptyFields.includes('translation') ? '1px solid red' : 'none' }}
+                    // style={{ border: emptyFields.includes('translation') ? '1px solid red' : 'none' }}
+                    className={emptyFields.translation ? styles.border__error : ''}
                 />
             </td>
-            <button disabled={emptyFields.length > 0} onClick={handleSave}>Save</button>
+            <button disabled={btnDisabled} onClick={handleSave}>Save</button>
             <button onClick={handleClose}>Close</button>
         </tr>
     ) : (

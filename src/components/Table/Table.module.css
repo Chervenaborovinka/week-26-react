@@ -26,3 +26,7 @@
 .table button:hover {
     background-color: #2F4F4F;
 }
+
+.border__error{
+    border: 1px solid red;
+}
