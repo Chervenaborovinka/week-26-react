@@ -7,13 +7,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import words from "./data/words";
 import Content from './Content/Content';
+import WordContext from './components/WordContext/WordContext';
 
 function App() {
   return (
     <Router>
       <div className='App'>
         <Header />
-
+<WordContext/>
         <Routes>
           <Route path="/" element={<Table words={words} />} />
           <Route path="/table" element={<Table words={words} />} />
