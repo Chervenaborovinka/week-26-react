@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import words from "./data/words";
 import Content from './Content/Content';
-import Mounter from './components/WordContext/Mounter';
 
 function App() {
   return (

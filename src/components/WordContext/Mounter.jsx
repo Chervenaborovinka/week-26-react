@@ -43,7 +43,7 @@ const Mounter = ({children}) => {
     };
 
     return(
-        <WordContext.Provider value={{words,addWord,updateWord,deleteWord}}>
+        <WordContext value={{words,addWord,updateWord,deleteWord}}>
             {loading ? (<p>Loading...</p>
             ) : error ? (
                 <ErrorComponent message={error}/>
